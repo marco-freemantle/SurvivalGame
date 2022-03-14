@@ -44,6 +44,9 @@ public:
 
 	float GetHealth() const;
 
+	UFUNCTION(BlueprintCallable)
+	void AddHealth(float HealAmount);
+
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "HealthComponent")
 	static bool IsFriendly(AActor* ActorA, AActor* ActorB);
 

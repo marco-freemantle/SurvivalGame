@@ -76,6 +76,11 @@ float USHealthComponent::GetHealth() const
 	return Health;
 }
 
+void USHealthComponent::AddHealth(float HealAmount)
+{
+	Health = FMath::Clamp(Health + HealAmount, 100.0f, DefaultHealth);
+}
+
 //Returns whether or not two actors are on the same team
 bool USHealthComponent::IsFriendly(AActor* ActorA, AActor* ActorB)
 {

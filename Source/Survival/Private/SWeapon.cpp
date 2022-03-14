@@ -11,6 +11,7 @@
 #include "PhysicalMaterials/PhysicalMaterial.h"
 #include "TimerManager.h"
 #include "Net/UnrealNetwork.h"
+#include "Sound/SoundCue.h"
 
 // Sets default values
 ASWeapon::ASWeapon()
@@ -92,6 +93,7 @@ void ASWeapon::Fire()
 				if (SurfaceType == SURFACE_FLESHVULNERABLE)
 				{
 					ActualDamage *= 4;
+					UGameplayStatics::SpawnSoundAtLocation(this, HeadShotSound, GetActorLocation());
 				}
 
 				UGameplayStatics::ApplyPointDamage(HitActor, ActualDamage, ShotDirection, Hit, MyOwner->GetInstigatorController(), MyOwner, DamageType);
@@ -140,6 +142,11 @@ void ASWeapon::PlayFireEffects(FVector TraceEnd)
 	if (MuzzleEffect)
 	{
 		UGameplayStatics::SpawnEmitterAttached(MuzzleEffect, MeshComp, MuzzleSocketName);
+	}
+
+	if (GunShotSound)
+	{
+		UGameplayStatics::SpawnSoundAtLocation(this, GunShotSound, GetActorLocation());
 	}
 
 	if (TracerEffect)

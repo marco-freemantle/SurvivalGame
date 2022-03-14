@@ -95,6 +95,15 @@ protected:
 	UPROPERTY(EditAnywhere, Category = "Weapon", meta = (ClampMin=0.0f))
 	float BulletSpread;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
+	class USoundCue* GunShotSound;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
+	class USoundCue* HeadShotSound;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Weapon")
+	class USoundCue* ReloadSound;
+
 	//Replicate HitScanTrace
 	UPROPERTY(ReplicatedUsing=OnRep_HitScanTrace)
 	FHitScanTrace HitScanTrace;
