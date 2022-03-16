@@ -38,7 +38,8 @@ void ASGrenadeLauncher::Fire()
 
 			if (GetLocalRole() == ROLE_Authority)
 			{
-				GetWorld()->SpawnActor<AActor>(ProjectileClass, MuzzleLocation, EyeRotation, SpawnParams);
+				//GetWorld()->SpawnActor<AActor>(ProjectileClass, MuzzleLocation, EyeRotation, SpawnParams, this, GetOwner());
+				SpawnProjectile(EyeRotation);
 			}
 
 			APawn* OwnerPawn = Cast<APawn>(GetOwner());

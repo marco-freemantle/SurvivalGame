@@ -23,4 +23,10 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "ProjectileWeapon")
 	TSubclassOf<AActor> ProjectileClass;
 
+	/*Spawning the projectile in blueprint allows us to pass the instantiated actor
+	the instigator controller. This allows players to receieve a score for killing enemies with
+	projectiles */
+	UFUNCTION(BlueprintImplementableEvent, Category = "GameMode")
+	void SpawnProjectile(FRotator EyeRotation);
+
 };
