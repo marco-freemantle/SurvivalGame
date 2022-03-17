@@ -35,9 +35,6 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent, Category = "GameMode")
 	void SpawnNewBot();
 
-	UFUNCTION(BlueprintImplementableEvent, Category = "GameMode")
-	void SpawnBoss();
-
 	void SpawnBotTimerElapsed();
 
 	void StartWave();

@@ -18,17 +18,9 @@ void ASGameMode::StartWave()
 {
 	WaveCount++;
 
-	ASGameState* GS = Cast<ASGameState>(GetWorld()->GetGameState());
-	GS->CurrentRound = WaveCount;
-
 	UE_LOG(LogTemp, Warning, TEXT("Wave %d"), WaveCount);
 
 	NrOfBotsToSpawn = 2 * WaveCount;
-
-	if (WaveCount % 5 == 0)
-	{
-		NrOfBotsToSpawn = 1;
-	}
 
 	GetWorldTimerManager().SetTimer(TimerHandle_BotSpawner, this, &ASGameMode::SpawnBotTimerElapsed, 1.0f, true, 0.0f);
 
@@ -45,6 +37,9 @@ void ASGameMode::EndWave()
 void ASGameMode::PrepareForNextWave()
 {
 	GetWorldTimerManager().SetTimer(TimerHandle_NextWaveStart, this, &ASGameMode::StartWave, TimeBetweenWaves, false);
+
+	ASGameState* GS = Cast<ASGameState>(GetWorld()->GetGameState());
+	GS->CurrentRound = WaveCount;
 
 	SetWaveState(EWaveState::WaitingToStart);
 
@@ -155,14 +150,7 @@ void ASGameMode::CheckWaveAndPlayerState()
 
 void ASGameMode::SpawnBotTimerElapsed()
 {
-	if (WaveCount % 5 == 0)
-	{
-		SpawnBoss();
-	}
-	else
-	{
-		SpawnNewBot();
-	}
+	SpawnNewBot();
 
 	NrOfBotsToSpawn--;
 

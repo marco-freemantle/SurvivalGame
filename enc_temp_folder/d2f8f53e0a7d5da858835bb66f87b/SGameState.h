@@ -33,14 +33,8 @@ protected:
 	UFUNCTION()
 	void OnRep_WaveState(EWaveState OldState);
 
-	UFUNCTION()
-	void OnRep_CurrentRound(int32 PreviousRound);
-
 	UFUNCTION(BlueprintImplementableEvent, Category = "GameState")
 	void WaveStateChanged(EWaveState NewState, EWaveState OldState);
-
-	UFUNCTION(BlueprintImplementableEvent, Category = "GameState")
-	void CurrentRoundChanged(int32 NewRound, int32 OldStatPreviousRound);
 
 	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_WaveState, Category = "GameState")
 	EWaveState WaveState;
@@ -49,7 +43,7 @@ public:
 
 	void SetWaveState(EWaveState NewState);
 
-	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_CurrentRound, Category = "GameState")
+	UPROPERTY(BlueprintReadWrite, Category = "GameState")
 	int32 CurrentRound;
 	
 };

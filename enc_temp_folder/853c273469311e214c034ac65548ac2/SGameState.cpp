@@ -10,18 +10,12 @@ void ASGameState::OnRep_WaveState(EWaveState OldState)
 	WaveStateChanged(WaveState, OldState);
 }
 
-void ASGameState::OnRep_CurrentRound(int32 PreviousRound)
-{
-	CurrentRoundChanged(CurrentRound, PreviousRound);
-}
-
 //Replicate the CurrentWeapon variable
 void ASGameState::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(ASGameState, WaveState);
-	DOREPLIFETIME(ASGameState, CurrentRound);
 }
 
 void ASGameState::SetWaveState(EWaveState NewState)
