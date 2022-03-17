@@ -30,6 +30,7 @@ ASWeapon::ASWeapon()
 	BaseAmmo = 30;
 	AmmoInClip = BaseAmmo;
 	bCanShoot = true;
+	bIsReloading = false;
 
 	SetReplicates(true);
 
@@ -235,6 +236,11 @@ void ASWeapon::StartReloadTimer()
 	{
 		ServerReload();
 	}
+	if (AmmoInClip < BaseAmmo && !bIsReloading)
+	{
+		UGameplayStatics::SpawnSoundAttached(ReloadSound, RootComponent);
+	}
+	bIsReloading = true;
 
 	if (AmmoInClip < BaseAmmo)
 	{
@@ -245,7 +251,9 @@ void ASWeapon::StartReloadTimer()
 
 void ASWeapon::Reload()
 {
-	AmmoInClip = BaseAmmo;;
+	AmmoInClip = BaseAmmo;
+	bIsReloading = false;
+
 	GetWorldTimerManager().ClearTimer(TimerHandle_ReloadTime);
 	bCanShoot = true;
 }

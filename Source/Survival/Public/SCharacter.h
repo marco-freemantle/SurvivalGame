@@ -55,6 +55,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player")
 	TSubclassOf<ASWeapon> StarterWeaponClass;
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player")
+	TSubclassOf<AActor> DeployableAbility;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Player")
 	FName WeaponAttachSocketname;
 
@@ -81,5 +84,8 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Player")
 	void StopFire();
+
+	UFUNCTION(BlueprintImplementableEvent, Category = "Player")
+	void UseAbility();
 
 };

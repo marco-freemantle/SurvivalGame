@@ -164,6 +164,8 @@ void ASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAction("Fire", IE_Released, this, &ASCharacter::StopFire);
 
 	PlayerInputComponent->BindAction("Reload", IE_Pressed, this, &ASCharacter::Reload);
+
+	PlayerInputComponent->BindAction("UseAbility", IE_Pressed, this, &ASCharacter::UseAbility);
 }
 
 FVector ASCharacter::GetPawnViewLocation() const

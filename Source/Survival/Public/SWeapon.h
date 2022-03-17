@@ -137,5 +137,7 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category = "Weapon")
 	bool bCanShoot;
 
+	bool bIsReloading;
+
 	float FirstDelay;
 };
