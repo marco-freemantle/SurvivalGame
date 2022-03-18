@@ -76,9 +76,14 @@ float USHealthComponent::GetHealth() const
 	return Health;
 }
 
-void USHealthComponent::AddHealth(float HealAmount)
+void USHealthComponent::AddHealth_Implementation(float HealAmount)
 {
 	Health = FMath::Clamp(Health + HealAmount, 100.0f, DefaultHealth);
+}
+
+bool USHealthComponent::AddHealth_Validate(float HealAmount)
+{
+	return true;
 }
 
 //Returns whether or not two actors are on the same team

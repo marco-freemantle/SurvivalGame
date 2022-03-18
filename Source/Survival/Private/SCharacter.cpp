@@ -7,6 +7,7 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/SHealthComponent.h"
 #include "Net/UnrealNetwork.h"
+#include "Animation/AnimInstance.h"
 
 // Sets default values
 ASCharacter::ASCharacter()
@@ -105,6 +106,21 @@ void ASCharacter::Reload()
 	if (CurrentWeapon)
 	{
 		CurrentWeapon->StartReloadTimer();
+
+		if (CurrentWeapon->AmmoInClip < CurrentWeapon->BaseAmmo)
+		{
+			UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
+			AnimInstance->Montage_Play(ReloadAnimation, 1.f);
+			//ReloadAnimation
+			/*Montage_Play
+			(
+				UAnimMontage * MontageToPlay,
+				float InPlayRate,
+				EMontagePlayReturnType ReturnValueT...,
+				float InTimeToStartMontageAt,
+				bool bStopAllMontages
+			)*/
+		}
 	}
 }
 

@@ -44,7 +44,7 @@ public:
 
 	float GetHealth() const;
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Server, Reliable, WithValidation)
 	void AddHealth(float HealAmount);
 
 	UFUNCTION(BlueprintCallable, BlueprintPure, Category = "HealthComponent")

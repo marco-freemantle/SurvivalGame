@@ -83,12 +83,6 @@ protected:
 	FTimerHandle TimerHandle_ReloadTime;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
-	float AmmoInClip;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
-	float BaseAmmo;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
 	float TimeToReload;
 
 	/*Bullet spread in degrees*/
@@ -137,7 +131,14 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category = "Weapon")
 	bool bCanShoot;
 
+	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Weapon")
 	bool bIsReloading;
 
 	float FirstDelay;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
+	float AmmoInClip;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon")
+	float BaseAmmo;
 };

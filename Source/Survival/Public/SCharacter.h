@@ -61,6 +61,9 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Player")
 	FName WeaponAttachSocketname;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Player")
+	class UAnimMontage* ReloadAnimation;
+
 	void Reload();
 
 	UFUNCTION()
