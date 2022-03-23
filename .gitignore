@@ -16,3 +16,5 @@ WindowsNoEditor/Survival/Content/Paks/Survival-WindowsNoEditor.pak
 Build/WindowsNoEditor/Engine/Extras/Redist/en-us/UE4PrereqSetup_x64.exe
 Build/WindowsNoEditor/FileOpenOrder/CookerOpenOrder.log
 Build/WindowsNoEditor/Survival/Content/Paks/Survival-WindowsNoEditor.pak
+Build/WindowsNoEditor.zip
+Content/SuperGrid/TutorialLevel/StarterTutorial_BuiltData.uasset
