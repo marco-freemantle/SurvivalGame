@@ -49,7 +49,7 @@ protected:
 	void EndZoom();
 
 	//Replicated weapon variable
-	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Player")
+	UPROPERTY(Replicated, BlueprintReadWrite, Category = "Player")
 	class ASWeapon* CurrentWeapon;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Player")
@@ -90,5 +90,14 @@ public:
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Player")
 	void UseAbility();
+
+	UFUNCTION(Server, Reliable, BlueprintCallable, Category = "Player")
+	void ServerSwapWeapon(TSubclassOf<class ASWeapon> NewWeapon);
+
+	UFUNCTION(BlueprintCallable, Category = "Player")
+	void DestroyActor(class AActor* ActorToDestroy);
+
+	UFUNCTION(Server, Reliable, BlueprintCallable, Category = "Player")
+	void ServerDestroyActor(class AActor* ActorToDestroy);
 
 };

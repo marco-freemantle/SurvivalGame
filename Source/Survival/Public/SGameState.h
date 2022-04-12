@@ -49,7 +49,7 @@ public:
 
 	void SetWaveState(EWaveState NewState);
 
-	UPROPERTY(BlueprintReadOnly, ReplicatedUsing = OnRep_CurrentRound, Category = "GameState")
+	UPROPERTY(BlueprintReadWrite, ReplicatedUsing = OnRep_CurrentRound, Category = "GameState")
 	int32 CurrentRound;
 	
 };

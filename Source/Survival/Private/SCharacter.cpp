@@ -101,6 +101,43 @@ void ASCharacter::StopFire()
 	}
 }
 
+void ASCharacter::ServerSwapWeapon_Implementation(TSubclassOf<class ASWeapon> NewWeapon)
+{
+	//Only change weapon if we are the server
+	if (GetLocalRole() == ROLE_Authority)
+	{
+		CurrentWeapon->Destroy();
+
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+
+		CurrentWeapon = GetWorld()->SpawnActor<ASWeapon>(NewWeapon, FVector::ZeroVector, FRotator::ZeroRotator, SpawnParams);
+		if (CurrentWeapon)
+		{
+			CurrentWeapon->SetOwner(this);
+			CurrentWeapon->AttachToComponent(GetMesh(), FAttachmentTransformRules::SnapToTargetNotIncludingScale, WeaponAttachSocketname);
+		}
+	}
+}
+
+void ASCharacter::DestroyActor(AActor* ActorToDestroy)
+{
+	if (GetLocalRole() < ROLE_Authority)
+	{
+		ServerDestroyActor(ActorToDestroy);
+	}
+	ActorToDestroy->Destroy();
+}
+
+void ASCharacter::ServerDestroyActor_Implementation(AActor* ActorToDestroy)
+{
+	//Only destroy if we are the service
+	if (GetLocalRole() == ROLE_Authority)
+	{
+		ActorToDestroy->Destroy();
+	}
+}
+
 void ASCharacter::Reload()
 {
 	if (CurrentWeapon)
@@ -111,15 +148,6 @@ void ASCharacter::Reload()
 		{
 			UAnimInstance* AnimInstance = GetMesh()->GetAnimInstance();
 			AnimInstance->Montage_Play(ReloadAnimation, 1.f);
-			//ReloadAnimation
-			/*Montage_Play
-			(
-				UAnimMontage * MontageToPlay,
-				float InPlayRate,
-				EMontagePlayReturnType ReturnValueT...,
-				float InTimeToStartMontageAt,
-				bool bStopAllMontages
-			)*/
 		}
 	}
 }
