@@ -2,6 +2,7 @@
 
 
 #include "SGrenadeLauncher.h"
+#include "Sound/SoundCue.h"
 #include "Kismet/GameplayStatics.h"
 
 void ASGrenadeLauncher::BeginPlay()
@@ -38,9 +39,10 @@ void ASGrenadeLauncher::Fire()
 
 			if (GetLocalRole() == ROLE_Authority)
 			{
-				//GetWorld()->SpawnActor<AActor>(ProjectileClass, MuzzleLocation, EyeRotation, SpawnParams, this, GetOwner());
 				SpawnProjectile(EyeRotation);
+				PlayFireEffects(EyeLocation);
 			}
+			PlayFireEffects(EyeLocation);
 
 			APawn* OwnerPawn = Cast<APawn>(GetOwner());
 			if (MyOwner)

@@ -12,6 +12,8 @@
 #include "TimerManager.h"
 #include "Net/UnrealNetwork.h"
 #include "Sound/SoundCue.h"
+#include "Animation/AnimInstance.h"
+#include "SCharacter.h"
 
 // Sets default values
 ASWeapon::ASWeapon()
@@ -239,6 +241,11 @@ void ASWeapon::StartReloadTimer()
 	if (AmmoInClip < BaseAmmo && !bIsReloading)
 	{
 		UGameplayStatics::SpawnSoundAttached(ReloadSound, RootComponent);
+
+		ASCharacter* MyOwner = Cast<ASCharacter>(GetOwner());
+
+		UAnimInstance* AnimInstance = MyOwner->GetMesh()->GetAnimInstance();
+		AnimInstance->Montage_Play(MyOwner->ReloadAnimation, 1.f);
 	}
 	bIsReloading = true;
 

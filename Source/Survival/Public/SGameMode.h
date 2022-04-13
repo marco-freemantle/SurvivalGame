@@ -56,6 +56,7 @@ protected:
 
 	void SetWaveState(EWaveState NewState);
 
+	UFUNCTION(BlueprintCallable, Category = "GameMode")
 	void RespawnDeadPlayers();
 
 public:

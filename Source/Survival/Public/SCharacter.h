@@ -61,9 +61,6 @@ protected:
 	UPROPERTY(EditDefaultsOnly, Category = "Player")
 	FName WeaponAttachSocketname;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Player")
-	class UAnimMontage* ReloadAnimation;
-
 	void Reload();
 
 	UFUNCTION()
@@ -81,6 +78,9 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	virtual FVector GetPawnViewLocation() const override;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Player")
+	class UAnimMontage* ReloadAnimation;
 
 	UFUNCTION(BlueprintCallable, Category = "Player")
 	void StartFire();
