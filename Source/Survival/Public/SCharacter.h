@@ -25,6 +25,10 @@ protected:
 
 	void EndCrouch();
 
+	void PitchView(float Val);
+
+	void TurnView(float Val);
+
 	UPROPERTY(VisibleAnywhere, BluePrintReadOnly, Category = "Components")
 	class UCameraComponent* CameraComp;
 
@@ -69,6 +73,9 @@ protected:
 	//Pawn died previously
 	UPROPERTY(Replicated, BlueprintReadOnly, Category = "Player")
 	bool bDied;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Player")
+	float MouseSensitivity = 0.5f;
 
 public:	
 	// Called every frame

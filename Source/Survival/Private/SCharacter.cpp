@@ -75,6 +75,16 @@ void ASCharacter::EndCrouch()
 	UnCrouch();
 }
 
+void ASCharacter::PitchView(float Val)
+{
+	AddControllerPitchInput(Val * MouseSensitivity);
+}
+
+void ASCharacter::TurnView(float Val)
+{
+	AddControllerYawInput(Val * MouseSensitivity);
+}
+
 void ASCharacter::BeginZoom()
 {
 	bWantsToZoom = true;
@@ -193,8 +203,8 @@ void ASCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponen
 	PlayerInputComponent->BindAxis("MoveForward", this, &ASCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &ASCharacter::MoveRight);
 
-	PlayerInputComponent->BindAxis("LookUp", this, &ASCharacter::AddControllerPitchInput);
-	PlayerInputComponent->BindAxis("Turn", this, &ASCharacter::AddControllerYawInput);
+	PlayerInputComponent->BindAxis("LookUp", this, &ASCharacter::PitchView);
+	PlayerInputComponent->BindAxis("Turn", this, &ASCharacter::TurnView);
 
 	PlayerInputComponent->BindAction("Crouch", IE_Pressed, this, &ASCharacter::BeginCrouch);
 	PlayerInputComponent->BindAction("Crouch", IE_Released, this, &ASCharacter::EndCrouch);
