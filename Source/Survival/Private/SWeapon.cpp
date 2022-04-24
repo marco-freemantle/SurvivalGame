@@ -11,6 +11,7 @@
 #include "PhysicalMaterials/PhysicalMaterial.h"
 #include "TimerManager.h"
 #include "Net/UnrealNetwork.h"
+#include "Online/CoreOnline.h"
 #include "Sound/SoundCue.h"
 #include "Animation/AnimInstance.h"
 #include "SCharacter.h"

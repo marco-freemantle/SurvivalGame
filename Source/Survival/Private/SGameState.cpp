@@ -2,6 +2,7 @@
 
 
 #include "SGameState.h"
+#include "Online/CoreOnline.h"
 #include "Net/UnrealNetwork.h"
 
 

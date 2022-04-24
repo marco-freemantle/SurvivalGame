@@ -1,5 +1,7 @@
 #include "Components/SHealthComponent.h"
 #include "Net/UnrealNetwork.h"
+#include "Online/CoreOnline.h"
+#include "Net/UnrealNetwork.h"
 #include "SGameMode.h"
 
 // Sets default values for this component's properties

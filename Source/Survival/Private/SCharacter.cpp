@@ -7,6 +7,7 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/SHealthComponent.h"
 #include "Net/UnrealNetwork.h"
+#include "Online/CoreOnline.h"
 #include "Animation/AnimInstance.h"
 
 // Sets default values
