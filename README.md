@@ -1,6 +1,6 @@
 # Third Person Multiplayer Shooter
 
-Welcome to our Third Person Multiplayer Shooter game! This game allows users to engage in thrilling battles against friends in a free-for-all mode, equipped with a variety of weapons, buffs, and weapon upgrades. Additionally, players can team up in survival mode to fight against endless waves of zombies.
+Welcome to my Third Person Multiplayer Shooter game! This game allows users to engage in thrilling battles against friends in a free-for-all mode, equipped with a variety of weapons, buffs, and weapon upgrades. Additionally, players can team up in survival mode to fight against endless waves of zombies.
 
 ## Features
 
